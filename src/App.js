@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  let [counter, setCounter] = useState(0)
+
+  return <div>
+    <Button type={"info"} onClick={() =>
+        setCounter(counter -= 1)
+    }>
+      -
+    </Button>
+    {"   "}
+    <span className="badge badge-light"><h6>{counter}</h6></span>
+    {"   "}
+    <Button type={"info"} onClick={() =>
+        setCounter(counter += 1)
+    }>
+      +
+    </Button>
+
+  </div>
+
+}
+
+function Button({type, children, onClick}) {
+  return <button onClick={onClick} type="button" className={`btn btn-${type}`}>
+    {children}
+  </button>
 }
 
 export default App;
